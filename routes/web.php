@@ -16,7 +16,7 @@ Route::get('/jobs', function () {
     // dd($jobs[0]->title);
 
     // good for small queries if larger make sure pagination exists
-    $jobs = Job::with('employer')->paginate(10);
+    $jobs = Job::with('employer')->simplePaginate(10);
 
     return view('jobs', [
         'jobs' => $jobs
