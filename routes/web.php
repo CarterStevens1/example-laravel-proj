@@ -12,6 +12,9 @@ Route::get('/about', function () {
 });
 
 Route::get('/jobs', function () {
+    // $jobs = Job::all();
+    // dd($jobs[0]->title);
+
     return view('jobs', [
         'jobs' => Job::all()
     ]);
