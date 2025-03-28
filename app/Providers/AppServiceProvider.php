@@ -1,7 +1,10 @@
 <?php
+// FILE FOR CONFIGURING APPLICATION
+
 
 namespace App\Providers;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +22,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        //prevent lazy loading on the app.
+        // Model::preventLazyLoading(!app()->isProduction());
+        Model::preventLazyLoading();
     }
 }

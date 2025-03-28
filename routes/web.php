@@ -15,8 +15,11 @@ Route::get('/jobs', function () {
     // $jobs = Job::all();
     // dd($jobs[0]->title);
 
+    // good for small queries if larger make sure pagination exists
+    $jobs = Job::with('employer')->get();
+
     return view('jobs', [
-        'jobs' => Job::all()
+        'jobs' => $jobs
     ]);
 });
 
