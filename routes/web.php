@@ -18,15 +18,32 @@ Route::get('/jobs', function () {
     // good for small queries if larger make sure pagination exists
     $jobs = Job::with('employer')->simplePaginate(10);
 
-    return view('jobs', [
+    return view('jobs.index', [
         'jobs' => $jobs
     ]);
 });
 
+Route::get('/jobs/create', function () {
+    return view('jobs.create');
+});
+
+// Wild cards should be close to the bottom
 Route::get('/jobs/{jobID}', function ($id) {
     $job = Job::find($id);
 
-    return view('job', ['job' => $job]);
+    return view('jobs.show', ['job' => $job]);
+});
+
+Route::post('/jobs', function () {
+    $data = request()->all();
+
+    $job = new Job();
+    $job->title = $data['title'];
+    $job->description = $data['description'];
+    $job->salary = $data['salary'];
+    $job->save();
+
+    return redirect('/jobs');
 });
 
 Route::get('/contact', function () {
