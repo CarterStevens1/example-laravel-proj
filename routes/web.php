@@ -16,7 +16,7 @@ Route::get('/jobs', function () {
     // dd($jobs[0]->title);
 
     // good for small queries if larger make sure pagination exists
-    $jobs = Job::with('employer')->simplePaginate(10);
+    $jobs = Job::with('employer')->latest()->simplePaginate(4);
 
     return view('jobs.index', [
         'jobs' => $jobs
@@ -35,13 +35,16 @@ Route::get('/jobs/{jobID}', function ($id) {
 });
 
 Route::post('/jobs', function () {
-    $data = request()->all();
+    request()->validate([
+        'title' => ['required', 'min:3'],
+        'salary' => ['required']
+    ]);
 
-    $job = new Job();
-    $job->title = $data['title'];
-    $job->description = $data['description'];
-    $job->salary = $data['salary'];
-    $job->save();
+    Job::create([
+        'title' => request('title'),
+        'salary' => request('salary'),
+        'employer_id' => 1
+    ]);
 
     return redirect('/jobs');
 });
