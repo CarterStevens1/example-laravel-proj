@@ -56,7 +56,7 @@ class JobController extends Controller
 
         // };
 
-        Gate::authorize('edit-job', $job);
+        // Gate::authorize('edit-job', $job);
 
 
         // $job = Job::find($id);
