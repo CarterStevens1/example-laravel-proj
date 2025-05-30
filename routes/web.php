@@ -3,8 +3,17 @@
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
+use App\Mail\JobPosted;
 use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+
+// TESTING MAIL
+// Route::get('test', function () {
+//     // return new JobPosted();
+//     Mail::to('carter@forthwithlife.co.uk')->send(new JobPosted());
+//     return 'Done';
+// });
 
 // Route::get('/', function () {
 //     return view('home');
