@@ -8,7 +8,7 @@ use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
-// TESTING MAIL
+/////////// TESTING MAIL
 // Route::get('test', function () {
 //     // return new JobPosted();
 //     Mail::to('carter@forthwithlife.co.uk')->send(new JobPosted());
